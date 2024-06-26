@@ -229,7 +229,7 @@
 <?php endif; ?>
                         <?php if (isset($component)) { $__componentOriginal10476663a3271f48a2be05c903a73050 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal10476663a3271f48a2be05c903a73050 = $attributes; } ?>
-<?php $component = ProtoneMedia\Splade\Components\Form\Select::resolve(['name' => 'categories[]','options' => $categories,'placeholder' => 'Categories','multiple' => true,'relation' => true,'choices' => true,'optionLabel' => 'name','optionValue' => 'id'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = ProtoneMedia\Splade\Components\Form\Select::resolve(['name' => 'category_ids[]','options' => $categories,'placeholder' => 'Categories','multiple' => true,'relation' => true,'choices' => true,'optionLabel' => 'name','optionValue' => 'id'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('splade-select'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

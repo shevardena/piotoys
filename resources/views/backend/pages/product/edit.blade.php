@@ -60,7 +60,7 @@
                 <aside v-show="data.relations_tab">
                     <div class="flex flex-col sm:flex-row mt-4">
                         <x-splade-select class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" name="purchase_id" :options="$toy_purchases" placeholder="Purchase" choices option-label="name" option-value="id" />
-                        <x-splade-select class="w-full sm:w-1/2 mt-4 sm:mt-0" name="categories[]" :options="$categories" placeholder="Categories" multiple relation choices option-label="name" option-value="id" />
+                        <x-splade-select class="w-full sm:w-1/2 mt-4 sm:mt-0" name="category_ids[]" :options="$categories" placeholder="Categories" multiple relation choices option-label="name" option-value="id" />
                     </div>
                 </aside>
                 <aside v-show="data.seo_tab">
