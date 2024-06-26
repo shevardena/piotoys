@@ -1,6 +1,7 @@
 @extends('frontend.layouts.default')
 
 @seoTitle('Pio Toys - Coming Soon')
+@seoKeywords('toys,child toys,toy,სათამაშო,მეორადი სათამაშოები')
 @seoDescription('Poy Toys')
 
 @section('content')
