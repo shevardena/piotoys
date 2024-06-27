@@ -5,7 +5,7 @@
 @seoDescription('Poy Toys')
 
 @section('content')
-    <div style="background-image: url('{{ asset('images/bg.png') }}'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 10%;">
+    <div class="bg-cover bg-center min-h-screen flex items-center justify-center py-10 md:py-20 responsive-bg" style="background-image: url('{{ asset('images/bg.png') }}');">
         <div class="text-center">
             <h1 class="text-6xl font-bold">
                 <span class="text-pio-green">Com</span>

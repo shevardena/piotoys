@@ -30,3 +30,12 @@
     font-family: 'Avenir Next Georgian Xtrabold';
     src: url(../fonts/AvenirNextGeorgian-XtraBd.1ffb9ded.otf)
 }
+.responsive-bg{
+    max-width: 100%;
+}
+@media (max-width: 768px) {
+    .responsive-bg {
+        background-size: cover;
+        background-position: center top;
+    }
+}
