@@ -72,7 +72,6 @@ class BackendCategoryController extends Controller
      */
     public function edit(int $category): \Illuminate\Foundation\Application|View|Factory|Application
     {
-        dd($this->categoryRepository->find($category));
         return view('backend.pages.category.edit', [
             'category' => $this->categoryRepository->find($category)
         ]);

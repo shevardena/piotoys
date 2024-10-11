@@ -25,10 +25,8 @@ class BackendCategoryService
     {
         DB::beginTransaction();
         try {
-            dd($data);
             $this->categoryRepository->create($data);
         } catch (\Exception $e) {
-            dd($e);
             DB::rollBack();
             throw $e;
         }
@@ -46,7 +44,6 @@ class BackendCategoryService
     {
         DB::beginTransaction();
         try {
-//            dd($data);
             $this->categoryRepository->update($id, $data);
         } catch (\Exception $e) {
             DB::rollBack();
