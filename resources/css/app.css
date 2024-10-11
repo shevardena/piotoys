@@ -30,3 +30,33 @@
     font-family: 'Avenir Next Georgian Xtrabold';
     src: url(../fonts/AvenirNextGeorgian-XtraBd.1ffb9ded.otf)
 }
+.responsive-bg{
+    max-width: 100%;
+}
+@media (max-width: 768px) {
+    .responsive-bg {
+        background-size: cover;
+        background-position: center top;
+    }
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1000;
+    width: 100px;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #f0f0f0;
+}

@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Requests\Backend;
+
+use App\Models\{{modelName}}
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Gate;
+
+class {{requestName}} extends FormRequest
+{
+    public function authorize()
+    {
+        return Gate::allows('create', {{modelName}}::class);
+    }
+
+    public function rules()
+    {
+        $defaultLocale = Config::get('app.locale');
+
+        return [
+          'name[' . $defaultLocale . ']' => 'required',
+          'is_active' => 'required|boolean',
+        ];
+    }
+}

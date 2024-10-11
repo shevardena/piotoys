@@ -1,0 +1,20 @@
+// {{viewsFolderNamePlural}}
+Breadcrumbs::for('{{viewsFolderNamePlural}}.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('backend.dashboard');
+    $trail->push('{{modelNamePlural}}', route('{{viewsFolderNamePlural}}.index'));
+});
+
+Breadcrumbs::for('{{viewsFolderNamePlural}}.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('backend.dashboard');
+    $trail->parent('{{viewsFolderNamePlural}}.index');
+    $trail->push('Create');
+});
+
+Breadcrumbs::for('{{viewsFolderNamePlural}}.edit', function (BreadcrumbTrail $trail, int ${{modelVariable}}) {
+
+    ${{modelName}} = {{modelName}}::findOrFail(${{modelVariable}});
+
+    $trail->parent('backend.dashboard');
+    $trail->parent('{{viewsFolderNamePlural}}.index');
+    $trail->push(${{modelVariable}}->name, route('{{viewsFolderNamePlural}}.edit', ${{modelVariable}}));
+});

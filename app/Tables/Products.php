@@ -63,6 +63,7 @@ class Products extends AbstractTable
                 sortable: true,
                 as: fn($updated_at) => $updated_at->format('d M, Y H:i')
             )
-            ->column(label: 'Actions');
+            ->column(label: 'Actions')
+        ->paginate(10);
     }
 }

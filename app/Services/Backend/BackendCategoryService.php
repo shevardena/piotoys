@@ -2,22 +2,22 @@
 
 namespace App\Services\Backend;
 
-use App\Repositories\ToyPurchaseRepository;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use ProtoneMedia\Splade\Facades\Toast;
 
-class ToyPurchaseService
+class BackendCategoryService
 {
-    protected ToyPurchaseRepository $toypurchaseRepository;
+    protected CategoryRepository $categoryRepository;
 
-    public function __construct(ToyPurchaseRepository $toypurchaseRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->toypurchaseRepository = $toypurchaseRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
-     * Store toy purchase
+     * Store category
      * @param array $data
      * @throws \Exception
      */
@@ -25,7 +25,7 @@ class ToyPurchaseService
     {
         DB::beginTransaction();
         try {
-            $this->toypurchaseRepository->create($data);
+            $this->categoryRepository->create($data);
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
@@ -34,7 +34,7 @@ class ToyPurchaseService
     }
 
     /**
-     * Update toy purchase
+     * Update category
      * @param int $id
      * @param array $data
      * @return void
@@ -44,7 +44,7 @@ class ToyPurchaseService
     {
         DB::beginTransaction();
         try {
-            $this->toypurchaseRepository->update($id, $data);
+            $this->categoryRepository->update($id, $data);
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
@@ -53,14 +53,20 @@ class ToyPurchaseService
     }
 
     /**
-     * @param int $toy_purchase
-     * @return RedirectResponse
+     * Delete category
+     * @param int $category
+     * @throws \Exception
      */
-    public function destroy(int $toy_purchase): RedirectResponse
+    public function destroy(int $category)
     {
-        $this->toypurchaseRepository->delete($toy_purchase);
-        Toast::title('Toy purchase deleted')->autoDismiss(5);
-        return redirect()->back();
+        DB::beginTransaction();
+        try {
+            $this->categoryRepository->delete($category);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+        DB::commit();
     }
 
 }

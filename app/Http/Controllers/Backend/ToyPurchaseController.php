@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\StoreToyPurchaseRequest;
 use App\Http\Requests\Backend\UpdateToyPurchaseRequest;
 use App\Models\ToyPurchase;
-use App\Services\Backend\ToyPurchaseService;
+use App\Repositories\ToyPurchaseRepository;
+use App\Services\Backend\BackendToyPurchaseService;
 use App\Tables\ToyPurchases;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -18,10 +19,12 @@ use ProtoneMedia\Splade\Facades\Toast;
 class ToyPurchaseController extends Controller
 {
     protected $toyPurchaseService;
+    protected ToyPurchaseRepository $toyPurchaseRepository;
 
-    public function __construct(ToyPurchaseService $toyPurchaseService)
+    public function __construct(BackendToyPurchaseService $toyPurchaseService, ToyPurchaseRepository $toyPurchaseRepository)
     {
         $this->toyPurchaseService = $toyPurchaseService;
+        $this->toyPurchaseRepository = $toyPurchaseRepository;
     }
 
     /**
@@ -65,13 +68,13 @@ class ToyPurchaseController extends Controller
 
     /**
      * Toy purchase edit page
-     * @param ToyPurchase $toy_purchase
+     * @param int $toy_purchase
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function edit(ToyPurchase $toy_purchase): \Illuminate\Foundation\Application|View|Factory|Application
+    public function edit(int $toy_purchase): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('backend.pages.toy_purchase.edit', [
-            'toy_purchase' => $toy_purchase
+            'toy_purchase' => $this->toyPurchaseRepository->find($toy_purchase),
         ]);
     }
 

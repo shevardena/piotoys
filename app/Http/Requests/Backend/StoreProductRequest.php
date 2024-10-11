@@ -35,6 +35,7 @@ class StoreProductRequest extends FormRequest
             'category_ids.*' => 'exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
+            'og_image' => 'nullable|file',
             'is_active' => 'nullable|boolean'
         ];
     }

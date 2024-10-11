@@ -1,21 +1,17 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminsController;
-use App\Http\Controllers\Backend\AthleteController;
+use App\Http\Controllers\Backend\BackendCategoryController;
 use App\Http\Controllers\Backend\BackendLoginController;
-use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\BackendMenuController;
+use App\Http\Controllers\Backend\BackendProductController;
+use App\Http\Controllers\Backend\BackendSettingController;
+use App\Http\Controllers\Backend\BackendSettingsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionsController;
-use App\Http\Controllers\Backend\PostController;
-use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\RolesController;
-use App\Http\Controllers\Backend\SettingsController;
-use App\Http\Controllers\Backend\SportTypeController;
-use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\ToyPurchaseController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\PostController as FrontendPostController;
-use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +41,7 @@ Route::middleware(['splade'])->group(function () {
     // Registers routes to support async File Uploads with Filepond...
     Route::spladeUploads();
 
+
     // Dashboard
     Route::view('backend/login', 'backend.pages.auth.login')
         ->name('backend.login');
@@ -60,6 +57,16 @@ Route::middleware(['splade'])->group(function () {
         ->name('profile.update');
 
     Route::prefix('backend')->middleware('admin')->group(function () {
+            Route::resource('locales', \App\Http\Controllers\Backend\BackendLocaleController::class)->except('show');
+
+            Route::resource('menu_items', \App\Http\Controllers\Backend\BackendMenuItemController::class)->except('show');
+
+            Route::resource('menus', \App\Http\Controllers\Backend\BackendMenuController::class)->except('show');
+
+            Route::resource('settings', \App\Http\Controllers\Backend\BackendSettingController::class)->except('show');
+
+
+
 
         // Dashboard
 
@@ -82,15 +89,23 @@ Route::middleware(['splade'])->group(function () {
         Route::resource('toy_purchases', ToyPurchaseController::class)->except('show');
 
         // Categories
-        Route::resource('categories', CategoryController::class)->except('show');
+        Route::resource('categories', BackendCategoryController::class)->except('show');
+
+        // Menus
+        Route::resource('menus', BackendMenuController::class)->except('show');
 
         // Products
-        Route::resource('products', ProductController::class)->except('show');
-        Route::get('products/import_images', [ProductController::class, 'importImages'])->name('products.import_images');
-        Route::post('products/import_images', [ProductController::class, 'storeFromImages'])->name('products.store_from_images');
+        Route::resource('products', BackendProductController::class)->except('show');
+        Route::get('products/import_images', [BackendProductController::class, 'importImages'])->name('products.import_images');
+        Route::post('products/import_images', [BackendProductController::class, 'storeFromImages'])->name('products.store_from_images');
+
+        // Settings
+        Route::resource('settings', BackendSettingController::class)->except('show');
+
 
     });
 
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/home', [HomeController::class, 'home'])->name('home.home');
 
 });

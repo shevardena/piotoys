@@ -1,6 +1,6 @@
-<aside id="sidebar"
-       :class="{'hidden': !isSidebarHidden, 'fixed': true, 'z-20': true, 'h-full': true, 'top-0': true, 'left-0': true, 'pt-16': true, 'flex': true, 'lg:flex': true, 'flex-shrink-0': true, 'flex-col': true, 'w-64': true, 'transition-width': true, 'duration-75': true}"
-       aria-label="Sidebar">
+<aside
+    :class="{'hidden': !isSidebarHidden, 'fixed': true, 'z-20': true, 'h-full': true, 'top-0': true, 'left-0': true, 'pt-16': true, 'flex': true, 'lg:flex': true, 'flex-shrink-0': true, 'flex-col': true, 'w-64': true, 'transition-width': true, 'duration-75': true}"
+    aria-label="Sidebar">
     <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
         <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div class="flex-1 px-3 bg-white divide-y space-y-1">
@@ -13,13 +13,13 @@
                         </Link>
                     </li>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view toy purchases')): ?>
-                    <li>
-                        <Link href="/backend/toy_purchases"
-                              class="<?php echo e(request()->is('backend/toy_purchases*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
-                        <i class="fa-solid fa-robot hover:text-gray-90"></i>
-                        <span class="ml-3">Toy Purchases</span>
-                        </Link>
-                    </li>
+                        <li>
+                            <Link href="/backend/toy_purchases"
+                                  class="<?php echo e(request()->is('backend/toy_purchases*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
+                            <i class="fa-solid fa-robot hover:text-gray-90"></i>
+                            <span class="ml-3">Toy Purchases</span>
+                            </Link>
+                        </li>
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view categories')): ?>
                         <li>
@@ -36,6 +36,26 @@
                                   class="<?php echo e(request()->is('backend/products*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
                             <i class="fa-solid fa-gift hover:text-gray-90"></i>
                             <span class="ml-3">Products</span>
+                            </Link>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view settings')): ?>
+                        <li>
+                            <Link href="/backend/settings"
+                                  class="<?php echo e(request()->is('backend/settings*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
+                            <i class="fa-solid fa-gear hover:text-gray-90"></i>
+                            <span class="ml-3">Settings</span>
+                            </Link>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view menus')): ?>
+                        <li>
+                            <Link href="/backend/menus"
+                                  class="<?php echo e(request()->is('backend/menus*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
+                            <i class="fa-solid fa-list hover:text-gray-90"></i>
+                            <span class="ml-3">Menus</span>
                             </Link>
                         </li>
                     <?php endif; ?>

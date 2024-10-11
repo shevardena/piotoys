@@ -11,9 +11,11 @@ interface ToyPurchaseRepositoryInterface
 
     public function find(int $id): ?ToyPurchase;
 
-    public function create(array $data);
+    public function create(array $data): ToyPurchase;
 
-    public function update(int $id, array $data);
+    public function update(int $id, array $data): ToyPurchase;
+
+    public function save(ToyPurchase $toyPurchase, array $data): void;
 
     public function delete(int $id): void;
 }

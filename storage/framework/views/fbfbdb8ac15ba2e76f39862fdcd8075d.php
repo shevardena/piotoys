@@ -229,7 +229,7 @@
 <?php endif; ?>
                         <?php if (isset($component)) { $__componentOriginal10476663a3271f48a2be05c903a73050 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal10476663a3271f48a2be05c903a73050 = $attributes; } ?>
-<?php $component = ProtoneMedia\Splade\Components\Form\Select::resolve(['name' => 'category_ids[]','options' => $categories,'placeholder' => 'Categories','multiple' => true,'relation' => true,'choices' => true,'optionLabel' => 'name','optionValue' => 'id'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = ProtoneMedia\Splade\Components\Form\Select::resolve(['name' => 'category_ids[]','options' => $categories,'placeholder' => 'Categories','multiple' => true,'choices' => true,'optionLabel' => 'name','optionValue' => 'id'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('splade-select'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -292,6 +292,28 @@
 <?php if (isset($__componentOriginal8a09b4fbcafa220e62e8b6be607afce2)): ?>
 <?php $component = $__componentOriginal8a09b4fbcafa220e62e8b6be607afce2; ?>
 <?php unset($__componentOriginal8a09b4fbcafa220e62e8b6be607afce2); ?>
+<?php endif; ?>
+                    </div>
+                    <div class="flex flex-col sm:flex-row mt-4">
+                        <?php if (isset($component)) { $__componentOriginal4cd41e82379e83253fe439725f650e27 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4cd41e82379e83253fe439725f650e27 = $attributes; } ?>
+<?php $component = ProtoneMedia\Splade\Components\Form\File::resolve(['name' => 'og_image','filepond' => true,'preview' => true,'label' => 'OG Image'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('splade-file'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\ProtoneMedia\Splade\Components\Form\File::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'w-full sm:w-1/2 mr-8 mt-4 sm:mt-0']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4cd41e82379e83253fe439725f650e27)): ?>
+<?php $attributes = $__attributesOriginal4cd41e82379e83253fe439725f650e27; ?>
+<?php unset($__attributesOriginal4cd41e82379e83253fe439725f650e27); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4cd41e82379e83253fe439725f650e27)): ?>
+<?php $component = $__componentOriginal4cd41e82379e83253fe439725f650e27; ?>
+<?php unset($__componentOriginal4cd41e82379e83253fe439725f650e27); ?>
 <?php endif; ?>
                     </div>
                 </aside>

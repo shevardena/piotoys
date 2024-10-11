@@ -5,12 +5,13 @@ namespace App\Services\Backend;
 use App\Http\Requests\Backend\ImportProductImagesRequest;
 use App\Http\Requests\Backend\StoreProductRequest;
 use App\Http\Requests\Backend\UpdateProductRequest;
+use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Support\Facades\DB;
 use ProtoneMedia\Splade\FileUploads\HandleSpladeFileUploads;
 use ProtoneMedia\Splade\FileUploads\SpladeFile;
 
-class ProductService
+class BackendProductService
 {
     protected ProductRepository $productRepository;
 
@@ -29,7 +30,7 @@ class ProductService
         DB::beginTransaction();
         try {
             $product = $this->productRepository->create($request->validated());
-            HandleSpladeFileUploads::syncMediaLibrary($request, $product, 'images');
+            $this->syncProductImages($request, $product);
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
@@ -49,7 +50,7 @@ class ProductService
         DB::beginTransaction();
         try {
             $product = $this->productRepository->update($id, $request->validated());
-            HandleSpladeFileUploads::syncMediaLibrary($request, $product, 'images', 'images');
+            $this->syncProductImages($request, $product);
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
@@ -73,9 +74,6 @@ class ProductService
         }
         DB::commit();
     }
-
-
-
 
 
     /**
@@ -103,6 +101,13 @@ class ProductService
             throw $e;
         }
         DB::commit();
+    }
+
+    public function syncProductImages($request, Product $product): void
+    {
+        HandleSpladeFileUploads::syncMediaLibrary($request, $product, 'image', 'image');
+        HandleSpladeFileUploads::syncMediaLibrary($request, $product, 'images', 'images');
+        HandleSpladeFileUploads::syncMediaLibrary($request, $product, 'og_image', 'og_image');
     }
 
 }

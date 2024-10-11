@@ -2,6 +2,7 @@ import "./bootstrap";
 import "../css/app.css";
 import "@protonemedia/laravel-splade/dist/style.css";
 import "@protonemedia/laravel-splade/dist/jodit.css";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 import RepeaterComponent from './components/RepeaterComponent.vue';
 import ToggleComponent from './components/ToggleComponent.vue';
 

@@ -9,23 +9,20 @@ use Spatie\Sluggable\SlugOptions;
 
 class Category extends Model
 {
-    use HasFactory,  HasSlug;
-
-    /**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions() : SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
-    }
+    use HasFactory, HasSlug;
 
     protected $fillable = ['name', 'description', 'meta_title', 'meta_description', 'is_active'];
 
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 
     public function products()
     {
