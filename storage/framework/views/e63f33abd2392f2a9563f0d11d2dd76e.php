@@ -59,16 +59,6 @@ aria-label="Sidebar">
                 </li>
                 <?php endif; ?>
 
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view locales')): ?>
-                <li>
-                    <Link href="/backend/locales"
-                          class="<?php echo e(request()->is('backend/locales*') ? 'bg-cyan-700 text-white' : 'text-cyan-700'); ?> text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
-                        <i class="fa-solid fa-language hover:text-gray-90"></i>
-                        <span class="ml-3">Locales</span>
-                    </Link>
-                </li>
-                <?php endif; ?>
-
 </ul>
             <div class="space-y-2 pt-2">
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view administrators')): ?>

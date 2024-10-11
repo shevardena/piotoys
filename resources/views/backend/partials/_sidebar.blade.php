@@ -59,16 +59,6 @@ aria-label="Sidebar">
                 </li>
                 @endcan
 
-                @can('view locales')
-                <li>
-                    <Link href="/backend/locales"
-                          class="{{ request()->is('backend/locales*') ? 'bg-cyan-700 text-white' : 'text-cyan-700' }} text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
-                        <i class="fa-solid fa-language hover:text-gray-90"></i>
-                        <span class="ml-3">Locales</span>
-                    </Link>
-                </li>
-                @endcan
-
 </ul>
             <div class="space-y-2 pt-2">
                 @can('view administrators')
