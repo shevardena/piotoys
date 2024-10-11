@@ -19,6 +19,7 @@
         "vue": "^3.4"
     },
     "dependencies": {
+        "flag-icons": "^7.2.3",
         "v-click-outside": "^3.2.0"
     }
 }

@@ -28,5 +28,3 @@
         </x-splade-form>
     </div>
 @endsection
-
-

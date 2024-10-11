@@ -13,14 +13,13 @@ var require_ssr = __commonJS({
     var vue = { exports: {} };
     var vue_cjs_prod = {};
     /**
-    * vue v3.4.27
+    * vue v3.4.29
     * (c) 2018-present Yuxi (Evan) You and Vue contributors
     * @license MIT
     **/
     var hasRequiredVue_cjs_prod;
     function requireVue_cjs_prod() {
-      if (hasRequiredVue_cjs_prod)
-        return vue_cjs_prod;
+      if (hasRequiredVue_cjs_prod) return vue_cjs_prod;
       hasRequiredVue_cjs_prod = 1;
       (function(exports2) {
         Object.defineProperty(exports2, "__esModule", { value: true });
@@ -84,22 +83,20 @@ var require_ssr = __commonJS({
         runtimeDom.registerRuntimeCompiler(compileToFunction);
         exports2.compile = compileToFunction;
         Object.keys(runtimeDom).forEach(function(k) {
-          if (k !== "default" && !Object.prototype.hasOwnProperty.call(exports2, k))
-            exports2[k] = runtimeDom[k];
+          if (k !== "default" && !Object.prototype.hasOwnProperty.call(exports2, k)) exports2[k] = runtimeDom[k];
         });
       })(vue_cjs_prod);
       return vue_cjs_prod;
     }
     var vue_cjs = {};
     /**
-    * vue v3.4.27
+    * vue v3.4.29
     * (c) 2018-present Yuxi (Evan) You and Vue contributors
     * @license MIT
     **/
     var hasRequiredVue_cjs;
     function requireVue_cjs() {
-      if (hasRequiredVue_cjs)
-        return vue_cjs;
+      if (hasRequiredVue_cjs) return vue_cjs;
       hasRequiredVue_cjs = 1;
       (function(exports2) {
         Object.defineProperty(exports2, "__esModule", { value: true });
@@ -177,8 +174,7 @@ ${codeFrame}` : message);
         runtimeDom.registerRuntimeCompiler(compileToFunction);
         exports2.compile = compileToFunction;
         Object.keys(runtimeDom).forEach(function(k) {
-          if (k !== "default" && !Object.prototype.hasOwnProperty.call(exports2, k))
-            exports2[k] = runtimeDom[k];
+          if (k !== "default" && !Object.prototype.hasOwnProperty.call(exports2, k)) exports2[k] = runtimeDom[k];
         });
       })(vue_cjs);
       return vue_cjs;

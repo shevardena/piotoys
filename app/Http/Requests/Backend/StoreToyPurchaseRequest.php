@@ -25,8 +25,9 @@ class StoreToyPurchaseRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'box_count' => 'required',
             'price_per_kg' => 'required',
             'purchase_date' => 'required',

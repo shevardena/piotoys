@@ -11,7 +11,8 @@ class ToyPurchaseRepository implements ToyPurchaseRepositoryInterface
 
     protected $model;
 
-    public function __construct(ToyPurchase $model){
+    public function __construct(ToyPurchase $model)
+    {
         $this->model = $model;
     }
 
@@ -25,18 +26,33 @@ class ToyPurchaseRepository implements ToyPurchaseRepositoryInterface
         return $this->model->findOrFail($id);
     }
 
-    public function create(array $data)
+    public function create(array $data): ToyPurchase
     {
-        $this->model->create($data);
+        $toyPurchase = new ToyPurchase();
+        $this->save($toyPurchase, $data);
+        return $toyPurchase;
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data): ToyPurchase
     {
-        $this->model->find($id)->update($data);
+        $toyPurchase = $this->model->findOrFail($id);
+        $this->save($toyPurchase, $data);
+        return $toyPurchase;
     }
 
     public function delete(int $id): void
     {
         $this->model->destroy($id);
+    }
+
+    public function save(ToyPurchase $toyPurchase, array $data): void
+    {
+        $toyPurchase->name = $data['name'];
+        $toyPurchase->box_count = $data['box_count'];
+        $toyPurchase->price_per_kg = $data['price_per_kg'];
+        $toyPurchase->purchase_date = $data['purchase_date'];
+        $toyPurchase->amount_paid = $data['amount_paid'];
+
+        $toyPurchase->save();
     }
 }

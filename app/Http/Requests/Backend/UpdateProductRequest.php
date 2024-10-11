@@ -34,6 +34,7 @@ class UpdateProductRequest extends FormRequest
             'categories' => 'nullable|array',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
+            'og_image' => 'nullable|file',
             'is_active' => 'required|boolean',
         ];
     }

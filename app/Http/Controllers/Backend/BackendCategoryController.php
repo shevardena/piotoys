@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\StoreCategoryRequest;
 use App\Http\Requests\Backend\UpdateCategoryRequest;
 use App\Models\Category;
-use App\Services\Backend\CategoryService;
+use App\Repositories\CategoryRepository;
+use App\Services\Backend\BackendCategoryService;
 use App\Tables\Categories;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -14,13 +15,15 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use ProtoneMedia\Splade\Facades\Toast;
 
-class CategoryController extends Controller
+class BackendCategoryController extends Controller
 {
-    protected CategoryService $categoryService;
+    protected BackendCategoryService $categoryService;
+    protected CategoryRepository $categoryRepository;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(BackendCategoryService $categoryService, CategoryRepository $categoryRepository)
     {
         $this->categoryService = $categoryService;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -64,13 +67,14 @@ class CategoryController extends Controller
 
     /**
      * Category edit page
-     * @param Category $category
+     * @param int $category
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function edit(Category $category): \Illuminate\Foundation\Application|View|Factory|Application
+    public function edit(int $category): \Illuminate\Foundation\Application|View|Factory|Application
     {
+        dd($this->categoryRepository->find($category));
         return view('backend.pages.category.edit', [
-            'category' => $category
+            'category' => $this->categoryRepository->find($category)
         ]);
     }
 

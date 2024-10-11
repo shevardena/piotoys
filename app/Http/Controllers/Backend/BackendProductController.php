@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ImportProductImagesRequest;
 use App\Http\Requests\Backend\StoreProductRequest;
 use App\Http\Requests\Backend\UpdateProductRequest;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\ToyPurchaseRepository;
-use App\Services\Backend\ProductService;
+use App\Services\Backend\BackendProductService;
 use App\Tables\Products;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,17 +21,20 @@ use Illuminate\Http\RedirectResponse;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\FileUploads\ExistingFile;
 
-class ProductController extends Controller
+class BackendProductController extends Controller
 {
-    protected ProductService $productService;
+    protected BackendProductService $productService;
     protected ToyPurchaseRepository $toyPurchaseRepository;
     protected CategoryRepository $categoryRepository;
 
-    public function __construct(ProductService $productService, ToyPurchaseRepository $toyPurchaseRepository, CategoryRepository $categoryRepository)
+    protected ProductRepository $productRepository;
+
+    public function __construct(BackendProductService $productService, ToyPurchaseRepository $toyPurchaseRepository, CategoryRepository $categoryRepository, ProductRepository $productRepository)
     {
         $this->productService = $productService;
         $this->toyPurchaseRepository = $toyPurchaseRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -76,15 +81,13 @@ class ProductController extends Controller
 
     /**
      * Product edit page
-     * @param Product $product
+     * @param int $product_id
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function edit(Product $product): \Illuminate\Foundation\Application|View|Factory|Application
+    public function edit(int $product_id): \Illuminate\Foundation\Application|View|Factory|Application
     {
-        $product->image = ExistingFile::fromMediaLibrary($product->getMedia('image'));
-        $product->images = ExistingFile::fromMediaLibrary($product->getMedia('images'));
         return view('backend.pages.product.edit', [
-            'product' => $product,
+            'product' => new ProductResource($this->productRepository->find($product_id)),
             'toy_purchases' => $this->toyPurchaseRepository->getAll(),
             'categories' => $this->categoryRepository->getAll()
         ]);

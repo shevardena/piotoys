@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use ProtoneMedia\Splade\Facades\SEO;
+use App\Services\Frontend\HomeService;
 
 class HomeController
 {
+    protected HomeService $homeService;
+
+    public function __construct(HomeService $homeService){
+        $this->homeService = $homeService;
+    }
+
     public function index(){
 
-        SEO::openGraphType('WebPage');
-        SEO::openGraphSiteName('Pio Toys');
-        SEO::openGraphTitle('Pio Toys - Home Page');
-        SEO::openGraphUrl('https://piotoys.gee');
-        SEO::openGraphImage(asset('images/bg.png'));
+        $this->homeService->setSeo();
+        return view('frontend.pages.index');
+    }
 
+    public function home(){
         return view('frontend.pages.home');
     }
 }

@@ -60,7 +60,7 @@
                 <aside v-show="data.relations_tab">
                     <div class="flex flex-col sm:flex-row mt-4">
                         <x-splade-select class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" name="purchase_id" :options="$toy_purchases" placeholder="Purchase" choices option-label="name" option-value="id" />
-                        <x-splade-select class="w-full sm:w-1/2 mt-4 sm:mt-0" name="category_ids[]" :options="$categories" placeholder="Categories" multiple relation choices option-label="name" option-value="id" />
+                        <x-splade-select class="w-full sm:w-1/2 mt-4 sm:mt-0" name="category_ids[]" :options="$categories" placeholder="Categories" multiple choices option-label="name" option-value="id" />
                     </div>
                 </aside>
                 <aside v-show="data.seo_tab">
@@ -71,10 +71,13 @@
                         <x-splade-textarea class="w-full sm:w-1/2 mt-4 sm:mt-0" name="meta_description"
                                            label="Meta description"/>
                     </div>
+                    <div class="flex flex-col sm:flex-row mt-4">
+                        <x-splade-file name="og_image" filepond preview class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" label="OG Image" />
+                    </div>
                 </aside>
                 <aside v-show="data.images_tab">
                     <div class="flex flex-col sm:flex-row mt-4">
-                        <x-splade-file name="image" multiple filepond preview class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" label="Main Image" />
+                        <x-splade-file name="image" filepond preview class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" label="Main Image" />
                         <x-splade-file name="images[]" multiple filepond preview class="w-full sm:w-1/2 mr-8 mt-4 sm:mt-0" label="Other Images" />
                     </div>
                 </aside>

@@ -15,40 +15,6 @@ class RoleAndPermissionSeeder extends Seeder
     {
         $permissions = [
             [
-                'name' => 'view cars',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'view car',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'view cars',
-                'guard_name' => 'web'
-            ],
-            [
-                'name' => 'view car',
-                'guard_name' => 'web'
-            ],
-            [
-                'name' => 'view expenses',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'view expense',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'create expense',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'edit expense',
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'delete expense',
-                'guard_name' => 'admin'
             ],
         ];
 

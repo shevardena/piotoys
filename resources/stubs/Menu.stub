@@ -1,0 +1,9 @@
+@can('view {{viewsFolderNamePlural}}')
+<li>
+    <Link href="/backend/{{viewsFolderNamePlural}}"
+          class="{{ request()->is('backend/{{viewsFolderNamePlural}}*') ? 'bg-cyan-700 text-white' : 'text-cyan-700' }} text-base font-normal rounded-md flex items-center p-2 hover:text-white hover:bg-cyan-700 group">
+        <i class="fa-solid fa-list hover:text-gray-90"></i>
+        <span class="ml-3">{{modelNamePlural}}</span>
+    </Link>
+</li>
+@endcan
